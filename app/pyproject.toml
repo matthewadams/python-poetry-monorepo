@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "app"
+version = "0.12.0-dev.0" # is there a way to reference the root pyproject.toml value for this?
+description = "executable app"
+
+[tool.poetry.dependencies]
+python = ">=3.13"
+foo = { path = "../foo/", develop = true }
+bar = { path = "../bar/", develop = true }
+core = { path = "../core/", develop = true } # foo & bar both depend on core, so it's a transitive dep: necessary?
+
+[build-system] # is there a way to reference the root pyproject.toml value for this?
+requires = ["poetry-core>=2.0.1,<2.1.0"]
+build-backend = "poetry.core.masonry.api"
